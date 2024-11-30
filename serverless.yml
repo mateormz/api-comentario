@@ -10,7 +10,8 @@ provider:
     role: arn:aws:iam::637423324074:role/LabRole
   environment:
     TABLE_NAME: ${sls:stage}-t_comentarios
-    S3_BUCKET_INGESTA: ${sls:stage}-comentarios-ingesta
+    # Usar un nombre de bucket con un sufijo único
+    S3_BUCKET_INGESTA: ${sls:stage}-comentarios-ingesta-${aws:accountId}-${opt:timestamp, 'no-timestamp'}
 
 functions:
   crear:
